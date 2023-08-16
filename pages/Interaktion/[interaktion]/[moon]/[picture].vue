@@ -15,7 +15,7 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
                class="exploration-menu w-24 h-24 top-12 left-0 absolute">
       <svg width="100%" height="100%" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <circle class="btn-bgx" cx="-0.133" cy="0.144" r="49.685" style="fill:#fff;fill-opacity:0.1;"/>
+        <circle class="btn-bgx" cx="-0.133" cy="0.144" r="49.685" style="fill:#fff;"/>
         <circle cx="13.691" cy="13.856" r="7.6" :style="`fill:${interaktionInfo.color};`"/>
         <circle cx="21.283" cy="28.761" r="5.149" :style="`fill:${interaktionInfo.color};`"/>
         <circle cx="29.797" cy="17.296" r="3.724" :style="`fill:${interaktionInfo.color};`"/>
