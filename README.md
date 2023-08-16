@@ -1,64 +1,31 @@
-# Nuxt 3 Minimal Starter
+Natürlich! Hier ist eine Vorlage für die `readme.md`-Datei:
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+---
 
-## Setup
+# GoldenArrow*Apollon
 
-Make sure to install the dependencies:
+## Über GoldenArrow*Apollon
 
-```bash
-# npm
-npm install
+GoldenArrow*Apollon ist eine innovative Software, die darauf abzielt, Kuratoren eine möglichst klare und umfassende Vorstellung von einer potenziellen Medienstation und ihren Teilen zu geben. Sie arbeitet nahtlos mit der Daphne-Datenbank zusammen, um diese Vision effektiv zu unterstützen und in die Praxis umzusetzen.
 
-# pnpm
-pnpm install
+Der Name "GoldenArrow*Apollon" ist inspiriert von der griechischen Mythologie, in der Eros Apollon mit einem goldenen Pfeil trifft, was ihn dazu bringt, sich in Daphne zu verlieben. Dies symbolisiert die "Zielgenauigkeit" der Software sowie ihre Ausrichtung auf den künstlerischen und kulturellen Sektor.
 
-# yarn
-yarn install
-```
+## Installation und Starten
 
-## Development Server
+Folgen Sie diesen einfachen Schritten, um GoldenArrow*Apollon auf Ihrem System zu installieren und zu starten:
 
-Start the development server on `http://localhost:3000`:
+1. **Installation**: Öffnen Sie ein Terminal und navigieren Sie zum Projektverzeichnis. Führen Sie dann den Befehl `yarn install` aus, um alle erforderlichen Abhängigkeiten zu installieren.
+2. **Starten**: Nach der Installation führen Sie den Befehl `yarn dev` aus, um den Entwicklungs-Server zu starten.
+3. **Zugriff**: Sobald der Server läuft, können Sie auf GoldenArrow*Apollon zugreifen, indem Sie Ihren Webbrowser öffnen und `http://localhost:3000` in die Adresszeile eingeben.
 
-```bash
-# npm
-npm run dev
+## Entstanden im Rahmen einer Bachelorarbeit
 
-# pnpm
-pnpm run dev
+Dieses Projekt ist im Rahmen einer Bachelorarbeit entstanden. Weitere Informationen und Einblicke in die Forschung und Entwicklung von GoldenArrow*Apollon finden Sie unter [LINK ZUR BACHELORARBEIT] (Platzhalter-Link).
 
-# yarn
-yarn dev
-```
+## Lizenz
 
-## Production
+Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden Sie in der Datei `LICENSE`.
 
-Build the application for production:
+## Kontakt
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# GoldenArrow-Apollon
+Bei Fragen oder Unterstützung wenden Sie sich bitte an dominik.ziegenhagel@mailbox.tu-dresden.de.
