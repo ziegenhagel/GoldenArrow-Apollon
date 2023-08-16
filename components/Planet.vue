@@ -13,6 +13,9 @@
       >
         <img :src="image.path" alt="Image"
              class="object-cover w-full h-full rounded-full"/>
+
+        <!-- have a group icon on the image if it is grouped -->
+        <v-icon icon="mdi-group" v-if="image.grouped" size="16" class="text-black bg-white rounded-full p-3 border-white -mt-32 ml-8"></v-icon>
       </div>
     </div>
   </div>
