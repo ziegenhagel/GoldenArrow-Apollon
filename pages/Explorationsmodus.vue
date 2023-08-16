@@ -3,7 +3,7 @@ import {data} from '~/composables/data.ts'
 </script>
 
 <template>
-  <div class="inset-0 absolute flex flex-col items-center justify-center bg-gray-800">
+  <div class="min-h-screen flex flex-col items-center justify-center bg-gray-800">
     <div class="flex gap-60 ml-80">
       <Planet
           title="Heranzoomen"

@@ -1,5 +1,5 @@
 <template>
-  <div class="inset-0 absolute flex flex-col items-center justify-center bg-gray-800">
+  <div class="h-screen flex flex-col items-center justify-center bg-gray-800">
     <div class="container">
       <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + color}">
         <!-- Zentraler Kreis -->
@@ -122,7 +122,6 @@ const positionMediumCircle = (index) => {
   transform: translate(100px, 100px);
   position: absolute;
   width: 100%;
-  height: 100%;
 }
 
 .image-circle {
