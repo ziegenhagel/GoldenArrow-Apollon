@@ -1,7 +1,3 @@
-Natürlich! Hier ist eine Vorlage für die `readme.md`-Datei:
-
----
-
 # GoldenArrow*Apollon
 
 ## Über GoldenArrow*Apollon
