@@ -41,7 +41,7 @@
 <script setup>
 const router = useRouter()
 const mode = computed(() => router.currentRoute.value.path.startsWith('/Verwaltungsmodus') ? 'Verwaltungsmodus' : router.currentRoute.value.path.startsWith('/Explorationsmodus') || router.currentRoute.value.path.startsWith('/Interaktion') ? 'Explorationsmodus' : 'Unbekannter Modus')
-const interaktion = computed(() => router.currentRoute.value.path.startsWith('/Interaktion') ? router.currentRoute.value.path.split('/')[1] : 'Keine Interaktion')
+const interaktion = computed(() => router.currentRoute.value.path.startsWith('/Interaktion') ? router.currentRoute.value.path.split('/')[2] : 'Keine Interaktion')
 const groupingEnabled = ref(false)
 const toggleGrouping = () => {
   groupingEnabled.value = !groupingEnabled.value

@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center bg-gray-800">
     <div class="container">
-      <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + color}">
+      <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + interaktionInfo.color}">
         <!-- Zentraler Kreis -->
       </div>
       <div class="outer-line">
@@ -21,6 +21,10 @@
       <div class="container">
         <div class="inner-circle">
           <!-- Zentraler Kreis -->
+          <v-icon :icon="interaktionInfo.icon" class="icon"/>
+          <h1>{{ interaktionInfo.title }}</h1>
+          <p class="max-w-sm opacity-70 text-center">Hier steht ein Fließtext - eine Erklärung der Interaktion auf klick der
+            jeweiligen kreise.</p>
         </div>
         <div class="outer-line">
           <!-- Umgebender Kreis mit nur Linie -->
@@ -53,10 +57,9 @@
 
 <script setup>
 import {data} from '~/composables/data.ts'
+import {interaktionen} from "~/composables/interaktionen";
 
 const images = data.value.map((d) => d.path)
-const colors = ['#97AD61', '#B48DB0', '#7D8DB6', '#C18365']
-const color = '#97AD61'
 
 const positionImage = (index, totalImages) => {
   const radius = 400; // Radius für die Bilder
@@ -72,8 +75,12 @@ const positionMediumCircle = (index) => {
   const angle = (2 * Math.PI / 3) * index; // 3 Kreise, also 2 * PI / 3
   const x = 420 + radius * Math.cos(angle) - 75; // Mitte + Radius
   const y = 420 + radius * Math.sin(angle) - 75;
-  return `left: ${x}px; top: ${y}px; background: ${color}`;
+  return `left: ${x}px; top: ${y}px; background: ${interaktionInfo.color}`;
 };
+
+const route = useRoute()
+const interaktion = route.params.interaktion
+const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
 </script>
 
 <style scoped>
@@ -84,12 +91,21 @@ const positionMediumCircle = (index) => {
 }
 
 .inner-circle {
+  @apply text-white flex flex-col items-center justify-center gap-4;
   width: 400px;
   height: 400px;
   border-radius: 50%;
   position: absolute;
   left: 300px;
   top: 300px;
+
+  .v-icon {
+    @apply text-8xl;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
 }
 
 .outer-line {
