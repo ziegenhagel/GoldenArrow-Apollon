@@ -1,7 +1,22 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center bg-gray-800">
+
+    <nuxt-link to="/Explorationsmodus" class="exploration-menu w-24 h-24 top-12 left-0 absolute">
+      <svg width="100%" height="100%" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
+           style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+        <circle class="btn-bgx" cx="-0.133" cy="0.144" r="49.685" :style="`fill:${interaktionInfo.color};`"/>
+        <g>
+          <circle cx="17.848" cy="12.286" r="6.031" style="fill:#9bac6a;"/>
+          <circle cx="8.928" cy="26.691" r="6.031" style="fill:#808cb3;"/>
+          <circle cx="35.378" cy="12.286" r="6.031" style="fill:#ae8fae;"/>
+          <circle cx="26.457" cy="26.691" r="6.031" style="fill:#b8866a;"/>
+        </g>
+      </svg>
+    </nuxt-link>
+
     <div
         :class="{'container': true, 'pulsating': selectedImageIndex !== null,  'not-pulsating': selectedImageIndex === null}">
+
       <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + interaktionInfo.color}">
         <!-- Zentraler Kreis -->
       </div>
@@ -19,6 +34,7 @@
               v-for="(moon,index) in moons"
               :key="index"
               :class="{'medium-circle text-white moon': true, 'pulsate': enabledMoons.includes(moon)}"
+              @click="openMoonPicture(moon, index)"
               :style="positionMediumCircle(index)"
           >
             <!-- Drei weitere Kreise -->
@@ -76,7 +92,13 @@ const route = useRoute()
 const interaktion = route.params.interaktion
 const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
 const moons = interaktionInfo.moons
+const router = useRouter()
+
+const openMoonPicture = (moon, picture) => {
+  router.push(`/Interaktion/${interaktion}/${moon}/${picture}`)
+}
 </script>
+
 
 <style scoped>
 .container {
@@ -185,5 +207,18 @@ h1 {
   overflow: hidden;
   border-radius: 50%;
   position: absolute;
+}
+
+.exploration-menu:hover {
+  cursor: pointer;
+}
+
+.exploration-menu .btn-bgx {
+  opacity: .1;
+  transition: .3s;
+}
+
+.exploration-menu:hover .btn-bgx {
+  opacity: .3;
 }
 </style>

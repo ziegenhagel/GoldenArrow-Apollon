@@ -11,14 +11,7 @@
     </v-btn>
 
     <!-- spacer -->
-    <div class="flex-1">
-      <v-btn v-if="mode === 'Explorationsmodus' && interaktion !== 'Keine Interaktion'"
-             prepend-icon="mdi-chevron-left"
-             variant="flat" color="blue-grey"
-             :text="interaktion"
-             @click="$router.go(-1)"
-      />
-    </div>
+    <div class="flex-1"></div>
 
     <!-- toggel between Verwaltungsmodus and Explorationsmodus -->
     <v-btn
@@ -32,7 +25,7 @@
         v-if="mode === 'Explorationsmodus'"
         @click="router.push('/Verwaltungsmodus')"
         append-icon="mdi-compass-off"
-        color="grey-darken-2"
+        color="blue-grey"
         text="Verwaltungsmodus"
     />
   </div>

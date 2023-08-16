@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-4 flex h-12 bg-white">
+  <div class="w-full p-4 flex h-12">
     <!-- have the title center and a settings icon on the right -->
     <div class="flex-1 flex items-center">
       <h1 class="text-xl mx-auto font-semibold">Projekt / Thema</h1>
