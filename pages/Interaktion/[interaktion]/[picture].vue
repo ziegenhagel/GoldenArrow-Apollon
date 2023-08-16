@@ -10,9 +10,7 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
 
 <template>
 
-
   <div class="h-screen bg-gray-800 overflow-hidden absolute w-full">
-
     <div class="side-icons">
       <div></div>
       <div class="info" :style="`background: ${interaktionInfo.color}`">
