@@ -4,10 +4,11 @@ import {data} from '~/composables/data.ts';
 const draggingElement = ref(null);
 
 const handleDragStart = (event, element) => {
-  if (element.locked) return;
   draggingElement.value = element;
   event.dataTransfer.effectAllowed = 'move';
 };
+
+const highlightGroup = ref(null) // parent element of the group
 
 const handleDrop = (event, targetElement) => {
   // remove all the drag styling
@@ -52,6 +53,27 @@ const handleDragLeave = event => {
 const toggleLock = (element) => {
   element.locked = !element.locked;
 }
+
+const highlightGroupClasses = (element) => {
+  if (highlightGroup.value === null) return {}
+  return {
+    'opacity-10 pointer-events-none': element.parent !== highlightGroup.value && element.id !== highlightGroup.value,
+  }
+}
+
+const groupClicked = (element) => {
+  // if the group is already highlighted, unhighlight it
+  if (highlightGroup.value !== null) {
+    highlightGroup.value = null
+    return
+  }
+
+  if (element.parent === null) {
+    highlightGroup.value = element.id;
+  } else {
+    highlightGroup.value = element.parent;
+  }
+}
 </script>
 
 <template>
@@ -59,7 +81,7 @@ const toggleLock = (element) => {
     <div
         v-for="element in data"
         :key="element.path"
-        :class="{'bg-white p-3 flex cursor-grab flex-col gap-3 rounded border-4 border-white': true, 'locked': element.locked}"
+        :class="{'bg-white p-3 flex element flex-col gap-3 rounded border-4 border-white': true, 'locked': element.locked, ...highlightGroupClasses(element)}"
         draggable="true"
         @dragstart="event => handleDragStart(event, element)"
         @drop="event => handleDrop(event, element)"
@@ -70,7 +92,8 @@ const toggleLock = (element) => {
       <div class="items-center justify-center flex">
         &nbsp;
         <v-icon icon="mdi-group" v-if="element.grouped"
-                :class="{'text-4xl':true, 'opacity-50': element.parent !== null}"></v-icon>
+                @click="groupClicked(element)"
+                :class="{'text-4xl':true, 'opacity-40': element.parent !== null}"></v-icon>
       </div>
 
       <img :src="element.path" class="w-full object-cover aspect-square rounded" alt="">
@@ -87,15 +110,18 @@ const toggleLock = (element) => {
 </template>
 <style scoped>
 .locked:hover {
-  cursor: not-allowed;
-  border-color:transparent !important;
+  border-color: transparent !important;
 }
 
-.cursor-grab:not(.locked):hover {
+.element {
+  transition: .1s;
+}
+
+.element:not(.locked):hover {
+  cursor: grab;
   border: 4px solid #a9a9a9;
 }
 
 /* later add green and red locks */
-
 </style>
 

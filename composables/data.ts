@@ -11,7 +11,7 @@ export const data = ref([
     {path: 'photo10.jpg'},
     {path: 'photo11.jpg'},
 ].map((item, index) => {
-    item.id = index + 1
+    item.id = index
     item.path = '/data/' + item.path
     item.grouped = index % 3 === 0
     item.parent = index % 3 === 0 && index !== 0 ? 0 : null
