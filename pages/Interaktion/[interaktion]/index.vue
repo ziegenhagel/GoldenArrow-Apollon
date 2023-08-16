@@ -4,20 +4,6 @@
       <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + interaktionInfo.color}">
         <!-- Zentraler Kreis -->
       </div>
-      <div class="outer-line">
-        <div class="outer-line-container">
-          <!-- Umgebender Kreis mit nur Linie -->
-          <div
-              v-for="index in [0, 1, 2]"
-              :key="index"
-              class="medium-circle"
-              :style="positionMediumCircle(index)"
-          >
-            <!-- Drei weitere Kreise -->
-            Center Text
-          </div>
-        </div>
-      </div>
       <div class="container">
         <div class="inner-circle">
           <!-- Zentraler Kreis -->
