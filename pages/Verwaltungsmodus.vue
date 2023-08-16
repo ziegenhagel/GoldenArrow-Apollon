@@ -8,8 +8,6 @@ const handleDragStart = (event, element) => {
   event.dataTransfer.effectAllowed = 'move';
 };
 
-const highlightGroup = ref(null) // parent element of the group
-
 const handleDrop = (event, targetElement) => {
   // remove all the drag styling
   event.target.parentElement.classList.remove('border-blue-400');
@@ -54,6 +52,7 @@ const toggleLock = (element) => {
   element.locked = !element.locked;
 }
 
+const highlightGroup = ref(null) // parent element of the group
 const highlightGroupClasses = (element) => {
   if (highlightGroup.value === null) return {}
   return {
