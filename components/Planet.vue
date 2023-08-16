@@ -1,6 +1,6 @@
 <template>
   <div class="container text-white">
-    <div class="circle" :style="{backgroundColor: color}">
+    <div class="circle" :style="{backgroundColor: color, boxShadow: `0 0 80px ${color}` }">
       <v-icon :icon="icon" class="icon"/>
       <h1>{{ title }}</h1>
     </div>
@@ -72,15 +72,15 @@ const positionImage = (index, totalImages) => {
   width: 100%;
   height: 100%;
   display: flex;
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 45px;
+  margin-top: 45px;
   align-items: center;
   justify-content: center;
 }
 
 .image-circle {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   position: absolute;
 }
