@@ -7,7 +7,7 @@
         variant="flat"
         color="grey-darken-2"
         @click="toggleGrouping"
-    >{{ groupingEnabled ? 'Gruppieren' : 'Separieren' }}
+    >{{ groupingEnabled ? 'Separieren' : 'Gruppieren' }}
     </v-btn>
 
     <!-- spacer -->
@@ -35,7 +35,7 @@
 const router = useRouter()
 const mode = computed(() => router.currentRoute.value.path.startsWith('/Verwaltungsmodus') ? 'Verwaltungsmodus' : router.currentRoute.value.path.startsWith('/Explorationsmodus') || router.currentRoute.value.path.startsWith('/Interaktion') ? 'Explorationsmodus' : 'Unbekannter Modus')
 const interaktion = computed(() => router.currentRoute.value.path.startsWith('/Interaktion') ? router.currentRoute.value.path.split('/')[2] : 'Keine Interaktion')
-const groupingEnabled = ref(false)
+const groupingEnabled = useState('groupingEnabled', () => false)
 const toggleGrouping = () => {
   groupingEnabled.value = !groupingEnabled.value
   console.log('toggle grouping')

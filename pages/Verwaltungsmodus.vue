@@ -13,12 +13,12 @@ const handleDrop = (event, targetElement) => {
   event.target.parentElement.classList.remove('border-blue-400');
   if (!draggingElement.value) return;
 
-  const draggedIndex = data.value.indexOf(draggingElement.value);
-  const targetIndex = data.value.indexOf(targetElement);
+  const draggedIndex = elements.value.indexOf(draggingElement.value);
+  const targetIndex = elements.value.indexOf(targetElement);
 
   if (draggedIndex !== targetIndex) {
-    const [removed] = data.value.splice(draggedIndex, 1);
-    data.value.splice(targetIndex, 0, removed);
+    const [removed] = elements.value.splice(draggedIndex, 1);
+    elements.value.splice(targetIndex, 0, removed);
   }
 
   draggingElement.value = null;
@@ -34,8 +34,8 @@ const handleDragEnter = (event, element) => {
     return;
   }
 
-  const targetIndex = data.value.indexOf(element);
-  const draggedIndex = data.value.indexOf(draggingElement.value);
+  const targetIndex = elements.value.indexOf(element);
+  const draggedIndex = elements.value.indexOf(draggingElement.value);
 
   if (draggedIndex < targetIndex) {
     event.target.parentElement.classList.add('border-blue-400');
@@ -59,6 +59,14 @@ const highlightGroupClasses = (element) => {
     'opacity-10 pointer-events-none': element.parent !== highlightGroup.value && element.id !== highlightGroup.value,
   }
 }
+const groupingEnabled = useState('groupingEnabled', () => false)
+const elements = computed(() => {
+  if (groupingEnabled.value && highlightGroup.value !== null)
+    return data.value.filter((element) => element.parent === highlightGroup.value || element.id === highlightGroup.value)
+  if (groupingEnabled.value)
+    return data.value.filter((element) => element.parent === null)
+  return data.value
+})
 
 const groupClicked = (element) => {
   // if the group is already highlighted, unhighlight it
@@ -78,7 +86,7 @@ const groupClicked = (element) => {
 <template>
   <div class="grid grid-cols-5 gap-1 m-3 mt-0">
     <div
-        v-for="element in data"
+        v-for="element in elements"
         :key="element.path"
         :class="{'bg-white p-3 flex element flex-col gap-3 rounded border-4 border-white': true, 'locked': element.locked, ...highlightGroupClasses(element)}"
         draggable="true"
