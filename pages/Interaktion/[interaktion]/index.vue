@@ -9,19 +9,20 @@
           <!-- Zentraler Kreis -->
           <v-icon :icon="interaktionInfo.icon" class="icon"/>
           <h1>{{ interaktionInfo.title }}</h1>
-          <p class="max-w-sm opacity-70 text-center">Hier steht ein Fließtext - eine Erklärung der Interaktion auf klick der
+          <p class="max-w-sm opacity-70 text-center">Hier steht ein Fließtext - eine Erklärung der Interaktion auf klick
+            der
             jeweiligen kreise.</p>
         </div>
         <div class="outer-line">
           <!-- Umgebender Kreis mit nur Linie -->
           <div
-              v-for="index in [0, 1, 2]"
+              v-for="(moon,index) in moons"
               :key="index"
-              class="medium-circle text-white"
+              class="medium-circle text-white moon"
               :style="positionMediumCircle(index)"
           >
             <!-- Drei weitere Kreise -->
-            Center Text
+            {{ moon }}
           </div>
         </div>
         <div class="image-container">
@@ -67,6 +68,7 @@ const positionMediumCircle = (index) => {
 const route = useRoute()
 const interaktion = route.params.interaktion
 const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
+const moons = interaktionInfo.moons
 </script>
 
 <style scoped>
@@ -85,13 +87,14 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
   left: 300px;
   top: 300px;
 
-  .v-icon {
-    @apply text-8xl;
-  }
+.v-icon {
+  @apply text-8xl;
+}
 
-  h1 {
-    @apply text-2xl;
-  }
+h1 {
+  @apply text-2xl;
+}
+
 }
 
 .outer-line {
@@ -103,6 +106,16 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
   left: 200px;
   top: 200px;
   overflow: visible;
+
+.moon {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 }
 
 .outer-line-container {
