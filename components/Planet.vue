@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-white">
+  <nuxt-link class="container text-white" :to="`/Interaktion-${title}`">
     <div class="circle" :style="{backgroundColor: color, boxShadow: `0 0 80px ${color}` }">
       <v-icon :icon="icon" class="icon"/>
       <h1>{{ title }}</h1>
@@ -15,10 +15,11 @@
              class="object-cover w-full h-full rounded-full"/>
 
         <!-- have a group icon on the image if it is grouped -->
-        <v-icon icon="mdi-group" v-if="image.grouped" size="16" class="text-black bg-white rounded-full p-3 border-white -mt-32 ml-8"></v-icon>
+        <v-icon icon="mdi-group" v-if="image.grouped" size="16"
+                class="text-black bg-white rounded-full p-3 border-white -mt-32 ml-8"></v-icon>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script setup>

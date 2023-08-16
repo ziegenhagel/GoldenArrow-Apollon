@@ -6,7 +6,7 @@ import {data} from '~/composables/data.ts'
   <div class="inset-0 absolute flex flex-col items-center justify-center bg-gray-800">
     <div class="flex gap-60 ml-80">
       <Planet
-          title="Vergrößern"
+          title="Heranzoomen"
           icon="mdi-magnify"
           color="#97AD61"
           :images="data"
@@ -20,7 +20,7 @@ import {data} from '~/composables/data.ts'
     </div>
     <div class="flex gap-60 -ml-80">
       <Planet
-          title="Verknüpfung"
+          title="Vernetzen"
           icon="mdi-trending-up"
           color="#7D8DB6"
           :images="data"
