@@ -14,6 +14,7 @@ export const data = ref([
     item.id = index + 1
     item.path = '/data/' + item.path
     item.grouped = index % 3 === 0
+    item.parent = index % 3 === 0 && index !== 0 ? 0 : null
     item.locked = index % 4 === 0
     return item
 }))

@@ -4,6 +4,7 @@ import {data} from '~/composables/data.ts';
 const draggingElement = ref(null);
 
 const handleDragStart = (event, element) => {
+  if (element.locked) return;
   draggingElement.value = element;
   event.dataTransfer.effectAllowed = 'move';
 };
@@ -46,7 +47,11 @@ const handleDragEnter = (event, element) => {
 
 const handleDragLeave = event => {
   event.target.parentElement.classList.remove('border-blue-400');
-};
+}
+
+const toggleLock = (element) => {
+  element.locked = !element.locked;
+}
 </script>
 
 <template>
@@ -54,7 +59,7 @@ const handleDragLeave = event => {
     <div
         v-for="element in data"
         :key="element.path"
-        class="bg-white p-3 flex flex-col gap-3 rounded border-4 border-white"
+        :class="{'bg-white p-3 flex cursor-grab flex-col gap-3 rounded border-4 border-white': true, 'locked': element.locked}"
         draggable="true"
         @dragstart="event => handleDragStart(event, element)"
         @drop="event => handleDrop(event, element)"
@@ -64,19 +69,33 @@ const handleDragLeave = event => {
     >
       <div class="items-center justify-center flex">
         &nbsp;
-        <v-icon icon="mdi-group" v-if="element.grouped" class="text-4xl"></v-icon>
+        <v-icon icon="mdi-group" v-if="element.grouped"
+                :class="{'text-4xl':true, 'opacity-50': element.parent !== null}"></v-icon>
       </div>
 
       <img :src="element.path" class="w-full object-cover aspect-square rounded" alt="">
 
       <!-- left side have a lock open or closed, and right side an info icon -->
       <div class="flex justify-between">
-        <v-icon icon="mdi-lock-open" v-if="element.locked" class="text-2xl"></v-icon>
-        <v-icon icon="mdi-lock" v-else class="text-2xl"></v-icon>
+        <v-icon icon="mdi-lock" v-if="element.locked" @click="toggleLock(element)"></v-icon>
+        <v-icon icon="mdi-lock-open" v-else @click="toggleLock(element)"></v-icon>
         <v-icon icon="mdi-information-outline" class="text-2xl"></v-icon>
       </div>
 
     </div>
   </div>
 </template>
+<style scoped>
+.locked:hover {
+  cursor: not-allowed;
+  border-color:transparent !important;
+}
+
+.cursor-grab:not(.locked):hover {
+  border: 4px solid #a9a9a9;
+}
+
+/* later add green and red locks */
+
+</style>
 
