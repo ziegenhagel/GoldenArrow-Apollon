@@ -9,8 +9,20 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
 </script>
 
 <template>
+  <div class="h-screen bg-gray-800 -mt-16 overflow-hidden absolute w-full">
 
-  <div class="h-screen bg-gray-800 overflow-hidden absolute w-full">
+    <nuxt-link :to="`/Interaktion/${interaktion}`"
+               class="exploration-menu w-24 h-24 top-12 left-0 absolute">
+      <svg width="100%" height="100%" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
+           style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+        <circle class="btn-bgx" cx="-0.133" cy="0.144" r="49.685" style="fill:#fff;fill-opacity:0.1;"/>
+        <circle cx="13.691" cy="13.856" r="7.6" :style="`fill:${interaktionInfo.color};`"/>
+        <circle cx="21.283" cy="28.761" r="5.149" :style="`fill:${interaktionInfo.color};`"/>
+        <circle cx="29.797" cy="17.296" r="3.724" :style="`fill:${interaktionInfo.color};`"/>
+      </svg>
+
+    </nuxt-link>
+
     <div class="side-icons">
       <div></div>
       <div class="info" :style="`background: ${interaktionInfo.color}`">
@@ -56,14 +68,18 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
   cursor: pointer;
   align-items: center;
   padding-right: 60px;
-  &:hover {
-    scale: 1.05;
-  }
 
-  &.share {
-    margin-bottom: -75px;
-    padding-bottom: 60px;
-  }
+&
+:hover {
+  scale: 1.05;
+}
+
+&
+.share {
+  margin-bottom: -75px;
+  padding-bottom: 60px;
+}
+
 }
 
 .big-container {
@@ -75,21 +91,38 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
   overflow: hidden;
   aspect-ratio: 1;
 
-  .object-container {
-    height: 70vh;
-    margin: 5%;
-    display: block;
+.object-container {
+  height: 70vh;
+  margin: 5%;
+  display: block;
 
-    img {
-      height: 100%;
-      border: 7px solid white;
-      border-radius: 5px;
-      margin: 0 auto;
-    }
-  }
+img {
+  height: 100%;
+  border: 7px solid white;
+  border-radius: 5px;
+  margin: 0 auto;
+}
 
-  h1 {
-    font-size: 2.5em;
-  }
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+}
+
+.exploration-menu {
+  @apply absolute top-0;
+  cursor: pointer;
+}
+
+.exploration-menu .btn-bgx {
+  opacity: .1;
+  transition: .3s;
+}
+
+.exploration-menu:hover .btn-bgx {
+  opacity: .3;
 }
 </style>
+
