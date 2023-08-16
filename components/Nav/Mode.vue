@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-4 flex h-16 bg-gray-200 justify-end">
+  <div class="w-full p-3 flex h-16 items-center bg-gray-200 justify-end">
     <!-- have on the left the button Gruppieren on the right the switch betweeen Verwaltungsmodus and Explorationsmodus -->
     <v-btn
         v-if="mode=== 'Verwaltungsmodus'"

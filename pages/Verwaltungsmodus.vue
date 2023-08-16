@@ -4,7 +4,7 @@ import {data} from '~/composables/data.ts'
 
 <template>
   <!-- grid of 4 columns -->
-  <div class="grid grid-cols-5 gap-1 m-3 -mt-3">
+  <div class="grid grid-cols-5 gap-1 m-3 mt-0">
     <div v-for="element in data" :key="element.path" class="bg-white p-3 flex flex-col gap-3 rounded">
 
       <div class="items-center justify-center flex">
