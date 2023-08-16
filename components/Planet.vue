@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="container text-white" :to="`/Interaktion-${title}`">
+  <nuxt-link class="container text-white" :to="`/Interaktion/${title}`">
     <div class="circle" :style="{backgroundColor: color, boxShadow: `0 0 80px ${color}` }">
       <v-icon :icon="icon" class="icon"/>
       <h1>{{ title }}</h1>
