@@ -13,13 +13,14 @@ const interaktionInfo = interaktionen.find((i) => i.title === interaktion)
 
     <nuxt-link :to="`/Interaktion/${interaktion}`"
                class="exploration-menu w-24 h-24 top-12 left-0 absolute">
-      <svg width="100%" height="100%" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
-           style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+      <svg width="100%" height="100%" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
         <circle class="btn-bgx" cx="-0.133" cy="0.144" r="49.685" style="fill:#fff;"/>
-        <circle cx="13.691" cy="13.856" r="7.6" :style="`fill:${interaktionInfo.color};`"/>
-        <circle cx="21.283" cy="28.761" r="5.149" :style="`fill:${interaktionInfo.color};`"/>
-        <circle cx="29.797" cy="17.296" r="3.724" :style="`fill:${interaktionInfo.color};`"/>
+        <circle cx="-3.936" cy="-3.839" r="22.914" :style="`fill:${interaktionInfo.color};`"/>
+        <circle cx="-3.936" cy="-3.839" r="36.969" :style="`fill:${interaktionInfo.color};fill-opacity:0;stroke:#fff;stroke-width:2px;`" opacity="0.3"/>
+        <circle cx="28" cy="14" r="5.2" style="fill:#fff;"/>
+        <circle cx="11.35" cy="29.407" r="5.2" style="fill:#fff;"/>
       </svg>
+
 
     </nuxt-link>
 
