@@ -29,24 +29,29 @@
         </div>
         <div class="outer-line">
           <!-- Umgebender Kreis mit nur Linie -->
+
           <div
               v-for="(moon,index) in moons"
               :key="index"
+              @drop.prevent="dropOnMoon(moon, index)"
+              @dragover.prevent
               :class="{'medium-circle text-white moon': true, 'pulsate': enabledMoons.includes(moon)}"
-              @click="openMoonPicture(moon, index)"
               :style="positionMediumCircle(index)"
           >
             {{ moon }}
           </div>
+
         </div>
         <div class="image-container">
           <!-- Bilder um das Ganze -->
           <div
               v-for="(image, index) in images.slice(0, 6)"
               :key="image"
+              draggable="true"
+              @dragstart="dragStart(index)"
+              @dragend="dragEnd"
               :title="index"
               :class="{'image-circle cursor-pointer': true, 'pulsate': selectedImageIndex === index}"
-              @click="selectedImageIndex = index"
               :style="positionImage(index, images.slice(0, 6).length)"
           >
             <img :src="image" alt="Image"/>
@@ -95,6 +100,24 @@ const router = useRouter()
 const openMoonPicture = (moon, picture) => {
   router.push(`/Interaktion/${interaktion}/${moon}/${picture}`)
 }
+
+let currentlyDraggingIndex = ref(null);
+
+const dragStart = (index) => {
+  currentlyDraggingIndex.value = index;
+}
+
+const dragEnd = () => {
+  currentlyDraggingIndex.value = null;
+}
+
+const dropOnMoon = (moon, index) => {
+  if (currentlyDraggingIndex.value !== null) {
+    selectedImageIndex.value = currentlyDraggingIndex.value;
+    openMoonPicture(moon, index);
+  }
+}
+
 </script>
 
 
