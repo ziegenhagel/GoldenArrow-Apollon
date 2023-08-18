@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="container text-white" :to="`/Interaktion/${title}`">
+  <nuxt-link class="container text-white hover-circle" :to="`/Interaktion/${title}`">
     <div class="circle" :style="{backgroundColor: color, boxShadow: `0 0 80px ${color}` }">
       <v-icon :icon="icon" class="icon"/>
       <h1>{{ title }}</h1>
@@ -51,7 +51,6 @@ const positionImage = (index, totalImages) => {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,6 +63,13 @@ const positionImage = (index, totalImages) => {
   h1 {
     font-size: 1.5rem;
   }
+}
+
+.hover-circle .circle{
+  transition: all 0.1s ease-out;
+}
+.hover-circle:hover .circle{
+  scale: 1.04;
 }
 
 .icon {

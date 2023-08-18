@@ -18,15 +18,14 @@
         :class="{'container': true, 'pulsating': selectedImageIndex !== null,  'not-pulsating': selectedImageIndex === null}">
 
       <div class="inner-circle" :style="{boxShadow: '0 0 300px ' + interaktionInfo.color}">
-        <!-- Zentraler Kreis -->
       </div>
       <div class="container">
         <div class="inner-circle">
-          <!-- Zentraler Kreis -->
           <v-icon :icon="interaktionInfo.icon" class="icon"/>
           <h1>{{ interaktionInfo.title }}</h1>
-          <p class="max-w-sm opacity-70 text-center">Hier steht ein Fließtext - eine Erklärung der Interaktion auf klick
-            der jeweiligen kreise.</p>
+          <p class="w-80 opacity-70 text-center">
+            Wählen Sie ein Bild, um Interaktionen in der Vorschau zu sehen.
+          </p>
         </div>
         <div class="outer-line">
           <!-- Umgebender Kreis mit nur Linie -->
@@ -37,7 +36,6 @@
               @click="openMoonPicture(moon, index)"
               :style="positionMediumCircle(index)"
           >
-            <!-- Drei weitere Kreise -->
             {{ moon }}
           </div>
         </div>
@@ -47,7 +45,7 @@
               v-for="(image, index) in images.slice(0, 6)"
               :key="image"
               :title="index"
-              :class="{'image-circle': true, 'pulsate': selectedImageIndex === index}"
+              :class="{'image-circle cursor-pointer': true, 'pulsate': selectedImageIndex === index}"
               @click="selectedImageIndex = index"
               :style="positionImage(index, images.slice(0, 6).length)"
           >
@@ -164,6 +162,17 @@ h1 {
 
 .pulsating .image-circle:not(.pulsate), .pulsating .moon:not(.pulsate) {
   opacity: 0.3;
+}
+
+.image-circle, .moon.pulsate {
+  transition: .2s;
+  /* anchor for scaling */
+  transform-origin: center center;
+}
+
+.image-circle:not(.pulsate):hover, .moon.pulsate:hover {
+  scale: 1.05;
+  cursor: pointer;
 }
 
 /*Helligkeit, Pulsieren*/

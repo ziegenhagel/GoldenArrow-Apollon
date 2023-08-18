@@ -13,6 +13,8 @@ export const data = ref([
 ].map((item, index) => {
     item.id = index
     item.path = '/data/' + item.path
+    item.title = 'Darstellung des Bildes'
+    item.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam lacinia, nunc nisl aliquet nunc, quis aliquam nisl nunc eu nisl. Nullam euismod, nisl eget aliquam lacinia, nunc nisl aliquet nunc, quis aliquam nisl nunc eu nisl.'
     item.grouped = index % 3 === 0
     item.parent = index % 3 === 0 && index !== 0 ? 0 : null
     item.locked = index % 4 === 0

@@ -88,7 +88,7 @@ const groupClicked = (element) => {
     <div
         v-for="element in elements"
         :key="element.path"
-        :class="{'bg-white p-3 flex element flex-col gap-3 rounded border-4 border-white': true, 'locked': element.locked, ...highlightGroupClasses(element)}"
+        :class="{'bg-white p-3 flex element flex-col gap-3 rounded border-4': true, 'locked': element.locked, ...highlightGroupClasses(element)}"
         draggable="true"
         @dragstart="event => handleDragStart(event, element)"
         @drop="event => handleDrop(event, element)"
@@ -116,8 +116,11 @@ const groupClicked = (element) => {
   </div>
 </template>
 <style scoped>
-.locked:hover {
-  border-color: transparent !important;
+.locked{
+}
+
+.locked:hover{
+  cursor: not-allowed;
 }
 
 .element {
