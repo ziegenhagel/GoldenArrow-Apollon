@@ -16,5 +16,5 @@
   "dependencies": {
     "@invictus.codes/nuxt-vuetify": "^0.3.0",
     "@nuxtjs/tailwindcss": "^6.8.0"
-  }
+ }
 }

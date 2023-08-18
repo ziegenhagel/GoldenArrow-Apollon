@@ -4,4 +4,5 @@ export default defineNuxtConfig({
         '@invictus.codes/nuxt-vuetify',
         '@nuxtjs/tailwindcss'
     ],
+    ssr: false,
 })
