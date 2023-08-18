@@ -81,9 +81,45 @@ const groupClicked = (element) => {
     highlightGroup.value = element.parent;
   }
 }
+const drawer = ref(false)
+const sideSheetElement = ref(null)
+const sideSheet = (element) => {
+  drawer.value = !drawer.value
+  sideSheetElement.value = element
+}
 </script>
 
 <template>
+  <v-layout>
+    <v-navigation-drawer v-model="drawer" temporary location="end" width="400">
+      <v-list-item v-if="sideSheetElement === null">
+        <h2 class="text-2xl">Kein Element ausgewählt</h2>
+      </v-list-item>
+      <v-list-item v-else>
+        <div class="flex flex-col gap-3 py-3">
+          <h2 class="text-2xl font-bold">{{ sideSheetElement.title }}</h2>
+          <p>{{ sideSheetElement.description }}</p>
+          <img :src="sideSheetElement.path" class="w-full object-cover aspect-square rounded" alt="">
+          <div class="flex flex-wrap gap-3 mt-2">
+            <v-chip variant="outlined" v-for="moon in sideSheetElement.moons" :key="moon">{{
+                moon
+              }}
+            </v-chip>
+          </div>
+
+          <!-- colored v-chips for  3D Zoom Enabled Slider -->
+          <div class="flex gap-3 mt-2">
+            <v-chip class="flex justify-center w-full" variant="flat" v-for="effect in [{title:'3D', color:'teal'}, {title:'Zoom', color:'pink'}, {title:'Enabled', color:'blue'}, {title:'Slider', color:'deep-orange'}]"
+:key="effect.title" :color="effect.color">{{
+                effect.title
+              }}
+            </v-chip>
+          </div>
+
+        </div>
+      </v-list-item>
+    </v-navigation-drawer>
+  </v-layout>
   <div class="grid grid-cols-5 gap-1 m-3 mt-0">
     <div
         v-for="element in elements"
@@ -109,17 +145,17 @@ const groupClicked = (element) => {
       <div class="flex justify-between">
         <v-icon icon="mdi-lock" v-if="element.locked" @click="toggleLock(element)"></v-icon>
         <v-icon icon="mdi-lock-open" v-else @click="toggleLock(element)"></v-icon>
-        <v-icon icon="mdi-information-outline" class="text-2xl"></v-icon>
+        <v-icon icon="mdi-information-outline" @click="sideSheet(element)" class="text-2xl"></v-icon>
       </div>
 
     </div>
   </div>
 </template>
 <style scoped>
-.locked{
+.locked {
 }
 
-.locked:hover{
+.locked:hover {
   cursor: not-allowed;
 }
 
