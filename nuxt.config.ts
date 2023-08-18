@@ -4,4 +4,9 @@ export default defineNuxtConfig({
         '@invictus.codes/nuxt-vuetify',
         '@nuxtjs/tailwindcss'
     ],
+    nitro: {
+        future: {
+            nativeSWR: true
+        }
+    }
 })
