@@ -24,7 +24,7 @@
           <v-icon :icon="interaktionInfo.icon" class="icon"/>
           <h1>{{ interaktionInfo.title }}</h1>
           <p class="w-80 opacity-70 text-center">
-            Wählen Sie ein Bild, um Interaktionen in der Vorschau zu sehen.
+            Ziehen Sie ein Bild auf einen der Monde, um eine Interaktion zu starten.
           </p>
         </div>
         <div class="outer-line">
@@ -101,19 +101,16 @@ const openMoonPicture = (moon, picture) => {
   router.push(`/Interaktion/${interaktion}/${moon}/${picture}`)
 }
 
-let currentlyDraggingIndex = ref(null);
-
 const dragStart = (index) => {
-  currentlyDraggingIndex.value = index;
+  selectedImageIndex.value = index;
 }
 
 const dragEnd = () => {
-  currentlyDraggingIndex.value = null;
+  selectedImageIndex.value = null;
 }
 
 const dropOnMoon = (moon, index) => {
-  if (currentlyDraggingIndex.value !== null) {
-    selectedImageIndex.value = currentlyDraggingIndex.value;
+  if (selectedImageIndex.value !== null) {
     openMoonPicture(moon, index);
   }
 }
